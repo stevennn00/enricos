@@ -1,0 +1,179 @@
+---
+const hours = [
+  { day: "Monday",    time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Tuesday",   time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Wednesday", time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Thursday",  time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Friday",    time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Saturday",  time: "4:00 PM – 1:00 AM", open: true },
+  { day: "Sunday",    time: "Closed",             open: false },
+];
+---
+<section class="hours-loc" id="hours">
+  <div class="container hl-inner">
+    <div class="hl-hours">
+      <span class="section-label">Hours</span>
+      <h2 class="section-title">When We're Open</h2>
+      <table class="hours-table">
+        <tbody>
+          {hours.map((h) => (
+            <tr class={h.open ? "" : "closed-row"}>
+              <td class="day">{h.day}</td>
+              <td class="time">
+                {h.open
+                  ? <span class="open-time">{h.time}</span>
+                  : <span class="closed-label">Closed</span>
+                }
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hl-location">
+      <span class="section-label">Location & Contact</span>
+      <h2 class="section-title">Find Us</h2>
+
+      <div class="info-block">
+        <div class="info-icon">📍</div>
+        <div>
+          <p class="info-label">Address</p>
+          <p>916 Patricia Ave, Ste D</p>
+          <p>Dunedin, FL 34698</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">📞</div>
+        <div>
+          <p class="info-label">Phone</p>
+          <a href="tel:+17274095348">(727) 409-5348</a>
+        </div>
+      </div>
+
+      <div class="loc-ctas">
+        <a href="tel:+17274095348" class="btn btn-primary">📞 Call Now</a>
+        <a
+          href="https://maps.google.com/?q=916+Patricia+Ave+Ste+D,+Dunedin,+FL+34698"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >📍 Get Directions</a>
+      </div>
+
+      <div class="map-placeholder">
+        <p>916 Patricia Ave Ste D, Dunedin, FL 34698</p>
+        <a
+          href="https://maps.google.com/?q=916+Patricia+Ave+Ste+D,+Dunedin,+FL+34698"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Open in Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hours-loc {
+    background: var(--cream-dark);
+  }
+
+  .hl-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table td {
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+  }
+
+  .hours-table .day {
+    color: var(--charcoal);
+    font-weight: 500;
+    width: 50%;
+  }
+
+  .open-time {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .closed-label {
+    color: #9ca3af;
+  }
+
+  .closed-row .day {
+    color: #9ca3af;
+  }
+
+  .info-block {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    margin-bottom: 1.4rem;
+  }
+
+  .info-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-block a {
+    color: var(--red);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .loc-ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+  }
+
+  .map-placeholder {
+    background: var(--charcoal-mid);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .map-placeholder a {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .hl-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

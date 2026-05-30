@@ -1,0 +1,116 @@
+---
+const dishes = [
+  {
+    name: "Birria Tacos",
+    description: "Slow-braised beef birria in handmade corn tortillas, dipped and pan-fried, served with rich consommé for dipping.",
+    tag: "Fan Favorite",
+    color: "#b91c1c",
+  },
+  {
+    name: "Gorditas",
+    description: "Thick, pillowy masa pockets stuffed with savory fillings — crispy outside, soft inside.",
+    tag: "House Specialty",
+    color: "#d4a017",
+  },
+  {
+    name: "Suadero",
+    description: "Tender, caramelized beef cut cooked low and slow — a Mexico City street-taco classic.",
+    tag: "Street Classic",
+    color: "#2d6a4f",
+  },
+  {
+    name: "Flautas",
+    description: "Tightly rolled corn tortillas filled with seasoned meat, fried golden and topped with fresh garnishes.",
+    tag: "Crowd Pleaser",
+    color: "#b91c1c",
+  },
+  {
+    name: "Taco Salad",
+    description: "A hearty bowl with seasoned meat, fresh greens, beans, salsa and all the fixings.",
+    tag: "Fresh Pick",
+    color: "#40916c",
+  },
+];
+---
+<section class="dishes" id="menu">
+  <div class="container">
+    <span class="section-label">Popular Dishes</span>
+    <h2 class="section-title">What Locals Love</h2>
+    <p class="section-subtitle">
+      A taste of what's keeping Dunedin coming back late into the night.
+      Menu details to be confirmed by owner.
+    </p>
+    <div class="dishes-grid">
+      {dishes.map((dish) => (
+        <article class="dish-card">
+          <div class="dish-accent" style={`background: ${dish.color}`}></div>
+          <div class="dish-body">
+            <span class="dish-tag" style={`color: ${dish.color}`}>{dish.tag}</span>
+            <h3 class="dish-name">{dish.name}</h3>
+            <p class="dish-desc">{dish.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .dishes {
+    background: var(--white);
+  }
+
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .dish-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--cream);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dish-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .dish-accent {
+    height: 5px;
+    width: 100%;
+  }
+
+  .dish-body {
+    padding: 1.4rem 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+  }
+
+  .dish-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .dish-name {
+    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    color: var(--charcoal);
+  }
+
+  .dish-desc {
+    font-size: 0.93rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+</style>

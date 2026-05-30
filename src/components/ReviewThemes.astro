@@ -1,0 +1,127 @@
+---
+const themes = [
+  {
+    icon: "🌮",
+    heading: "Birria That Brings People Back",
+    body: "Locals describe Enrico's birria tacos as the reason they drive across town late at night. The consommé dip is a crowd favorite.",
+  },
+  {
+    icon: "🕐",
+    heading: "The Go-To Late-Night Spot",
+    body: "Open until 1 AM Monday through Saturday, Enrico's fills a real gap in Dunedin's dining scene for folks who want real food after dark.",
+  },
+  {
+    icon: "🏘️",
+    heading: "A Dunedin Neighborhood Gem",
+    body: "Tucked on Patricia Ave, regulars say it has the feel of a hidden local secret — with food that punches well above its size.",
+  },
+  {
+    icon: "💚",
+    heading: "Authentic & Generous",
+    body: "Portions are hearty and the flavors are rooted in traditional Mexican street food — no corners cut, just good cooking.",
+  },
+];
+---
+<section class="themes" id="about">
+  <div class="container">
+    <span class="section-label">Why Locals Visit</span>
+    <h2 class="section-title">What People Are Saying</h2>
+    <p class="section-subtitle">
+      Common themes from the community — always visit their Yelp page for current reviews.
+    </p>
+    <div class="themes-grid">
+      {themes.map((t) => (
+        <div class="theme-card">
+          <div class="theme-icon">{t.icon}</div>
+          <div>
+            <h3 class="theme-heading">{t.heading}</h3>
+            <p class="theme-body">{t.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="yelp-cta">
+      <p>Read real reviews directly on Yelp:</p>
+      <a
+        href="https://www.yelp.com/biz/enricos-tacos-dunedin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-yelp"
+      >★ Read Reviews on Yelp</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .themes {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  .themes .section-label {
+    color: var(--gold);
+  }
+
+  .themes .section-title {
+    color: var(--cream);
+  }
+
+  .themes .section-subtitle {
+    color: #9ca3af;
+  }
+
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .theme-card {
+    background: var(--charcoal-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.4rem 1.6rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .theme-card:hover {
+    border-color: rgba(212,160,23,0.4);
+  }
+
+  .theme-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+
+  .theme-heading {
+    font-size: 1.05rem;
+    font-family: var(--font-heading);
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .theme-body {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.55;
+  }
+
+  .yelp-cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .yelp-cta p {
+    color: #9ca3af;
+    font-size: 0.95rem;
+  }
+</style>

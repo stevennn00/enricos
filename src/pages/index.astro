@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DisclaimerBanner from '../components/DisclaimerBanner.astro';
+import Hero from '../components/Hero.astro';
+import PopularDishes from '../components/PopularDishes.astro';
+import ReviewThemes from '../components/ReviewThemes.astro';
+import HoursLocation from '../components/HoursLocation.astro';
+import GalleryPlaceholders from '../components/GalleryPlaceholders.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout>
+  <DisclaimerBanner />
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Enrico's Tacos</a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <Hero />
+    <PopularDishes />
+    <ReviewThemes />
+    <HoursLocation />
+    <GalleryPlaceholders />
+    <ContactCTA />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Enrico's Tacos</strong>
+        <p>916 Patricia Ave Ste D, Dunedin, FL 34698</p>
+        <p><a href="tel:+17274095348">(727) 409-5348</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.yelp.com/biz/enricos-tacos-dunedin" target="_blank" rel="noopener noreferrer">★ Yelp</a>
+        <a href="https://maps.google.com/?q=916+Patricia+Ave+Ste+D,+Dunedin,+FL+34698" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="tel:+17274095348">Call Us</a>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      <p>
+        Demo concept website — not affiliated with Enrico's Tacos.
+        Photos and menu details to be confirmed by owner.
+      </p>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(28, 28, 28, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--cream);
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo:hover {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: #c8c0ad;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+  }
+
+  .nav-cta:hover {
+    background: var(--red-dark);
+  }
+
+  .site-footer {
+    background: var(--charcoal);
+    color: #9ca3af;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand strong {
+    display: block;
+    color: var(--cream);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-heading);
+  }
+
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .footer-brand a {
+    color: #9ca3af;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .footer-links a {
+    color: #9ca3af;
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--gold-light);
+  }
+
+  .footer-disclaimer {
+    text-align: center;
+    padding: 1rem 1.25rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.78rem;
+    color: #6b7280;
+  }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      display: none;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+    }
+
+    .footer-links {
+      align-items: flex-start;
+    }
+  }
+</style>
