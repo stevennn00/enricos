@@ -3,36 +3,37 @@ const themes = [
   {
     icon: "🌮",
     heading: "Birria That Brings People Back",
-    body: "Locals describe Enrico's birria tacos as the reason they drive across town late at night. The consommé dip is a crowd favorite.",
+    body: "The birria tacos and consommé dip come up again and again — it's clearly the dish people drive across town for.",
   },
   {
     icon: "🕐",
-    heading: "The Go-To Late-Night Spot",
-    body: "Open until 1 AM Monday through Saturday, Enrico's fills a real gap in Dunedin's dining scene for folks who want real food after dark.",
+    heading: "Dunedin's Late-Night Go-To",
+    body: "Open until 1 AM Monday through Saturday, Enrico's fills a real gap for anyone who wants legit food after dark.",
   },
   {
     icon: "🏘️",
-    heading: "A Dunedin Neighborhood Gem",
-    body: "Tucked on Patricia Ave, regulars say it has the feel of a hidden local secret — with food that punches well above its size.",
+    heading: "A Neighborhood Hidden Gem",
+    body: "Tucked on Patricia Ave, regulars describe it as the kind of spot that feels like a local secret — in the best way.",
   },
   {
     icon: "💚",
-    heading: "Authentic & Generous",
-    body: "Portions are hearty and the flavors are rooted in traditional Mexican street food — no corners cut, just good cooking.",
+    heading: "Generous Portions, Real Flavor",
+    body: "Customers mention hearty servings and flavors rooted in Mexican street-food tradition — straightforward and satisfying.",
   },
 ];
 ---
-<section class="themes" id="about">
+<section class="themes" id="reviews">
   <div class="container">
-    <span class="section-label">Why Locals Visit</span>
+    <span class="section-label">Community Themes</span>
     <h2 class="section-title">What People Are Saying</h2>
     <p class="section-subtitle">
-      Common themes from the community — always visit their Yelp page for current reviews.
+      Customers mention birria, tacos, friendly service, late-night hours,
+      and a casual local feel. Read full reviews on Yelp.
     </p>
     <div class="themes-grid">
       {themes.map((t) => (
         <div class="theme-card">
-          <div class="theme-icon">{t.icon}</div>
+          <span class="theme-icon">{t.icon}</span>
           <div>
             <h3 class="theme-heading">{t.heading}</h3>
             <p class="theme-body">{t.body}</p>
@@ -41,7 +42,7 @@ const themes = [
       ))}
     </div>
     <div class="yelp-cta">
-      <p>Read real reviews directly on Yelp:</p>
+      <p>Read real customer reviews directly on Yelp:</p>
       <a
         href="https://www.yelp.com/biz/enricos-tacos-dunedin"
         target="_blank"
@@ -54,20 +55,7 @@ const themes = [
 
 <style>
   .themes {
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-
-  .themes .section-label {
-    color: var(--gold);
-  }
-
-  .themes .section-title {
-    color: var(--cream);
-  }
-
-  .themes .section-subtitle {
-    color: #9ca3af;
+    background: var(--crema);
   }
 
   .themes-grid {
@@ -78,18 +66,20 @@ const themes = [
   }
 
   .theme-card {
-    background: var(--charcoal-mid);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius);
-    padding: 1.4rem 1.4rem 1.6rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.4rem 1.6rem;
     display: flex;
     gap: 1rem;
     align-items: flex-start;
-    transition: border-color 0.2s;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .theme-card:hover {
-    border-color: rgba(212,160,23,0.4);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
 
   .theme-icon {
@@ -100,16 +90,16 @@ const themes = [
   }
 
   .theme-heading {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-family: var(--font-heading);
-    color: var(--cream);
+    color: var(--charcoal);
     margin-bottom: 0.4rem;
   }
 
   .theme-body {
-    font-size: 0.9rem;
-    color: #9ca3af;
-    line-height: 1.55;
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
   }
 
   .yelp-cta {
@@ -121,7 +111,7 @@ const themes = [
   }
 
   .yelp-cta p {
-    color: #9ca3af;
+    color: var(--muted);
     font-size: 0.95rem;
   }
 </style>

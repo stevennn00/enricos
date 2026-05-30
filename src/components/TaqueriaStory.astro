@@ -1,0 +1,173 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<section class="story" id="about">
+  <div class="story-pattern" aria-hidden="true"></div>
+  <div class="container story-inner">
+
+    <div class="story-text">
+      <span class="section-label">The Taqueria</span>
+      <h2 class="section-title story-heading">Made for Late Nights<br/>and Big Cravings</h2>
+      <p class="story-body">
+        There's something about a warm corn tortilla at midnight that just hits different.
+        Enrico's Tacos is the kind of place that fills a real need in Dunedin —
+        real Mexican street food, open late, right on Patricia Ave.
+      </p>
+      <p class="story-body">
+        Think rich salsa, handmade-style masa, slow-cooked meats, and tacos
+        built for sharing. Whether you're stopping in after a long shift or
+        just chasing a late-night craving, the food here is the kind that keeps
+        you coming back.
+      </p>
+      <ul class="story-pillars">
+        <li>
+          <span class="pillar-dot" style="background: var(--salsa)"></span>
+          <span>Late-night hours, Mon – Sat until 1 AM</span>
+        </li>
+        <li>
+          <span class="pillar-dot" style="background: var(--tomatillo)"></span>
+          <span>Mexican street-food favorites done right</span>
+        </li>
+        <li>
+          <span class="pillar-dot" style="background: var(--amber)"></span>
+          <span>Tacos made for sharing around the table</span>
+        </li>
+        <li>
+          <span class="pillar-dot" style="background: var(--clay)"></span>
+          <span>A casual, neighborhood taqueria feel</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="story-img-wrap">
+      <img
+        src={`${base}images/timothy-l-brock-WJ5mej6mWi4-unsplash.jpg`}
+        alt="Colorful fresh chili peppers — the heart of Mexican flavor"
+        class="story-img"
+        loading="lazy"
+      />
+      <div class="story-img-caption">
+        <img
+          src={`${base}images/pexels-snappr-27603257.jpg`}
+          alt="Street tacos on a hand-painted Mexican clay plate"
+          class="story-img-inset"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .story {
+    background: var(--charcoal);
+    color: var(--crema);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle papel picado–inspired dot pattern */
+  .story-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  .story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .story .section-label {
+    color: var(--amber-light);
+  }
+
+  .story-heading {
+    color: var(--crema);
+    margin-bottom: 1.25rem;
+  }
+
+  .story-body {
+    font-size: 1rem;
+    color: #c4bdb4;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .story-pillars {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+  }
+
+  .story-pillars li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.93rem;
+    color: #d6cfc0;
+  }
+
+  .pillar-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .story-img-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: visible;
+  }
+
+  .story-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .story-img-caption {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    width: 55%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border: 3px solid var(--charcoal);
+  }
+
+  .story-img-inset {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .story-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .story-img-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .story-img-caption {
+      bottom: -1rem;
+      left: -1rem;
+    }
+  }
+</style>

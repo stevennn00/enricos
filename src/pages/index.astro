@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DisclaimerBanner from '../components/DisclaimerBanner.astro';
 import Hero from '../components/Hero.astro';
 import PopularDishes from '../components/PopularDishes.astro';
+import TaqueriaStory from '../components/TaqueriaStory.astro';
 import ReviewThemes from '../components/ReviewThemes.astro';
 import HoursLocation from '../components/HoursLocation.astro';
 import GalleryPlaceholders from '../components/GalleryPlaceholders.astro';
@@ -17,6 +18,7 @@ import ContactCTA from '../components/ContactCTA.astro';
       <ul class="nav-links">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#hours">Hours</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -27,6 +29,7 @@ import ContactCTA from '../components/ContactCTA.astro';
   <main>
     <Hero />
     <PopularDishes />
+    <TaqueriaStory />
     <ReviewThemes />
     <HoursLocation />
     <GalleryPlaceholders />
@@ -60,9 +63,9 @@ import ContactCTA from '../components/ContactCTA.astro';
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(28, 28, 28, 0.97);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(28, 25, 23, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--salsa);
   }
 
   .nav-inner {
@@ -78,14 +81,14 @@ import ContactCTA from '../components/ContactCTA.astro';
   .nav-logo {
     font-family: var(--font-heading);
     font-size: 1.2rem;
-    color: var(--cream);
+    color: var(--crema);
     font-weight: bold;
     text-decoration: none;
     letter-spacing: 0.01em;
   }
 
   .nav-logo:hover {
-    color: var(--gold-light);
+    color: var(--amber-light);
     text-decoration: none;
   }
 
@@ -97,27 +100,28 @@ import ContactCTA from '../components/ContactCTA.astro';
   }
 
   .nav-links a {
-    color: #c8c0ad;
-    font-size: 0.9rem;
+    color: #c4bdb4;
+    font-size: 0.875rem;
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .nav-links a:hover {
-    color: var(--cream);
+    color: var(--crema);
     text-decoration: none;
   }
 
   .nav-cta {
-    background: var(--red);
+    background: var(--salsa);
     color: var(--white) !important;
     padding: 0.4rem 1rem;
     border-radius: var(--radius);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 0.85rem !important;
   }
 
   .nav-cta:hover {
-    background: var(--red-dark);
+    background: var(--salsa-dark) !important;
   }
 
   .site-footer {
@@ -137,7 +141,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 
   .footer-brand strong {
     display: block;
-    color: var(--cream);
+    color: var(--crema);
     font-size: 1.1rem;
     margin-bottom: 0.4rem;
     font-family: var(--font-heading);
@@ -166,13 +170,13 @@ import ContactCTA from '../components/ContactCTA.astro';
   }
 
   .footer-links a:hover {
-    color: var(--gold-light);
+    color: var(--amber-light);
   }
 
   .footer-disclaimer {
     text-align: center;
     padding: 1rem 1.25rem 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.07);
     font-size: 0.78rem;
     color: #6b7280;
   }

@@ -1,23 +1,29 @@
 :root {
-  --cream: #fdf6e3;
-  --cream-dark: #f0e6c8;
-  --red: #b91c1c;
-  --red-dark: #991b1b;
-  --green: #2d6a4f;
-  --green-light: #40916c;
-  --gold: #d4a017;
-  --gold-light: #f0c040;
-  --charcoal: #1c1c1c;
-  --charcoal-mid: #2d2d2d;
+  /* Warm taqueria palette */
+  --crema: #fdf8f0;
+  --crema-dark: #f5ead4;
+  --tortilla: #f0d9a0;
+  --salsa: #c0392b;
+  --salsa-dark: #962d22;
+  --tomatillo: #2d6a4f;
+  --tomatillo-light: #3d8b6a;
+  --clay: #c1440e;
+  --clay-light: #e05a1a;
+  --amber: #d4870f;
+  --amber-light: #f0a830;
+  --charcoal: #1c1917;
+  --charcoal-mid: #292524;
+  --charcoal-soft: #44403c;
   --white: #ffffff;
-  --gray: #6b7280;
-  --border: #e5d8b8;
+  --muted: #78716c;
+  --border: #e7d8b8;
 
   --font-heading: 'Georgia', 'Times New Roman', serif;
   --font-body: 'Segoe UI', system-ui, sans-serif;
   --radius: 8px;
+  --radius-lg: 14px;
   --shadow: 0 2px 12px rgba(0,0,0,0.10);
-  --shadow-lg: 0 6px 32px rgba(0,0,0,0.16);
+  --shadow-lg: 0 8px 36px rgba(0,0,0,0.18);
 }
 
 *, *::before, *::after {
@@ -32,7 +38,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--cream);
+  background-color: var(--crema);
   color: var(--charcoal);
   line-height: 1.6;
   font-size: 1rem;
@@ -44,7 +50,7 @@ img {
 }
 
 a {
-  color: var(--red);
+  color: var(--salsa);
   text-decoration: none;
 }
 
@@ -58,7 +64,7 @@ h1, h2, h3, h4 {
 }
 
 section {
-  padding: 4rem 1.25rem;
+  padding: 4.5rem 1.25rem;
 }
 
 .container {
@@ -67,54 +73,68 @@ section {
   padding: 0 1.25rem;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.6rem;
+  padding: 0.8rem 1.75rem;
   border-radius: var(--radius);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   text-align: center;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   text-decoration: none;
   border: 2px solid transparent;
+  letter-spacing: 0.01em;
 }
 
 .btn:hover {
   text-decoration: none;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
 .btn-primary {
-  background: var(--red);
+  background: var(--salsa);
   color: var(--white);
-  border-color: var(--red);
+  border-color: var(--salsa);
 }
 
 .btn-primary:hover {
-  background: var(--red-dark);
-  border-color: var(--red-dark);
+  background: var(--salsa-dark);
+  border-color: var(--salsa-dark);
 }
 
 .btn-secondary {
-  background: var(--green);
+  background: var(--tomatillo);
   color: var(--white);
-  border-color: var(--green);
+  border-color: var(--tomatillo);
 }
 
 .btn-secondary:hover {
-  background: var(--green-light);
-  border-color: var(--green-light);
+  background: var(--tomatillo-light);
+  border-color: var(--tomatillo-light);
+}
+
+.btn-clay {
+  background: var(--clay);
+  color: var(--white);
+  border-color: var(--clay);
+}
+
+.btn-clay:hover {
+  background: var(--clay-light);
+  border-color: var(--clay-light);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--red);
-  border-color: var(--red);
+  color: var(--salsa);
+  border-color: var(--salsa);
 }
 
 .btn-outline:hover {
-  background: var(--red);
+  background: var(--salsa);
   color: var(--white);
 }
 
@@ -129,27 +149,46 @@ section {
   border-color: #b71c1c;
 }
 
+/* Section labels */
 .section-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--tomatillo);
   font-weight: 700;
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .section-title {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
   color: var(--charcoal);
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
   font-size: 1.05rem;
-  color: var(--gray);
+  color: var(--muted);
   max-width: 600px;
   margin-bottom: 2.5rem;
+  line-height: 1.65;
+}
+
+/* Subtle tile-inspired decorative divider */
+.tile-divider {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--salsa) 0px,
+    var(--salsa) 20px,
+    var(--amber) 20px,
+    var(--amber) 40px,
+    var(--tomatillo) 40px,
+    var(--tomatillo) 60px,
+    var(--clay) 60px,
+    var(--clay) 80px
+  );
+  opacity: 0.85;
 }
 
 @media (max-width: 640px) {

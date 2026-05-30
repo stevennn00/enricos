@@ -1,102 +1,150 @@
 ---
-const placeholders = [
-  { label: "Owner food photo here", icon: "🌮", hint: "Feature dish" },
-  { label: "Menu photo here", icon: "📋", hint: "Full menu board" },
-  { label: "Restaurant exterior photo here", icon: "🏠", hint: "Storefront" },
-  { label: "Interior photo here", icon: "🪑", hint: "Dining area" },
+const base = import.meta.env.BASE_URL;
+
+const photos = [
+  {
+    src: "pexels-snappr-27603257.jpg",
+    alt: "Street tacos served on a hand-painted Mexican clay plate with pico de gallo and guacamole",
+    caption: "Taqueria-style plating",
+  },
+  {
+    src: "deborah-rainford-zOlZgELBMRg-unsplash.jpg",
+    alt: "Hand holding a plate of tacos loaded with shrimp, avocado, and salsa",
+    caption: "Fresh and loaded",
+  },
+  {
+    src: "pexels-john-guccione-www-advergroup-com-1874301-7904958.jpg",
+    alt: "Three street tacos on a white plate topped with cilantro and white onion",
+    caption: "Classic street tacos",
+  },
+  {
+    src: "pexels-chitokan-3264572.jpg",
+    alt: "Beef tacos on a gray plate with metal salsa cups, lime, and chips",
+    caption: "Late-night essentials",
+  },
 ];
 ---
 <section class="gallery" id="gallery">
   <div class="container">
     <span class="section-label">Gallery</span>
-    <h2 class="section-title">A Closer Look</h2>
-    <p class="section-subtitle gallery-note">
-      Owner-approved photos can replace these placeholders.
+    <h2 class="section-title">The Food</h2>
+    <p class="section-subtitle">
+      Stock photos shown for demo purposes.
+      Owner-approved photos can replace these demo images.
     </p>
     <div class="gallery-grid">
-      {placeholders.map((p) => (
-        <div class="gallery-card">
-          <div class="gallery-inner">
-            <span class="gallery-icon">{p.icon}</span>
-            <span class="gallery-label">{p.label}</span>
-            <span class="gallery-hint">{p.hint}</span>
-          </div>
-        </div>
+      {photos.map((p, i) => (
+        <figure class={`gallery-item${i === 0 ? " gallery-item--wide" : ""}`}>
+          <img
+            src={`${base}images/${p.src}`}
+            alt={p.alt}
+            class="gallery-img"
+            loading="lazy"
+          />
+          <figcaption class="gallery-caption">{p.caption}</figcaption>
+        </figure>
       ))}
     </div>
-    <p class="replace-note">Owner-approved photos can replace these placeholders.</p>
+    <p class="demo-note">Owner-approved photos can replace these demo images.</p>
   </div>
 </section>
+<div class="tile-divider"></div>
 
 <style>
   .gallery {
-    background: var(--white);
+    background: var(--charcoal-mid);
+    padding: 4.5rem 1.25rem;
   }
 
-  .gallery-note {
-    font-style: italic;
+  .gallery .section-label {
+    color: var(--amber-light);
+  }
+
+  .gallery .section-title,
+  .gallery .section-subtitle {
+    color: var(--crema);
+  }
+
+  .gallery .section-subtitle {
+    color: #9ca3af;
   }
 
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
   }
 
-  .gallery-card {
-    aspect-ratio: 4 / 3;
-    background: var(--cream-dark);
-    border: 2px dashed var(--border);
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
     border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.2s, background 0.2s;
   }
 
-  .gallery-card:hover {
-    border-color: var(--gold);
-    background: #fdf3cc;
+  .gallery-item--wide {
+    grid-column: span 2;
   }
 
-  .gallery-inner {
-    text-align: center;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    transition: transform 0.4s ease;
+    display: block;
   }
 
-  .gallery-icon {
-    font-size: 2.2rem;
-    line-height: 1;
+  .gallery-item--wide .gallery-img {
+    aspect-ratio: 16 / 9;
   }
 
-  .gallery-label {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--charcoal);
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.04);
   }
 
-  .gallery-hint {
-    font-size: 0.75rem;
-    color: var(--gray);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    color: var(--crema);
+    font-size: 0.78rem;
+    padding: 1.5rem 0.85rem 0.55rem;
+    opacity: 0;
+    transition: opacity 0.2s;
   }
 
-  .replace-note {
+  .gallery-item:hover .gallery-caption {
+    opacity: 1;
+  }
+
+  .demo-note {
     margin-top: 1.25rem;
-    font-size: 0.8rem;
-    color: var(--gray);
+    font-size: 0.78rem;
+    color: #6b7280;
     text-align: center;
     font-style: italic;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-item--wide {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 420px) {
     .gallery-grid {
       grid-template-columns: 1fr;
+    }
+
+    .gallery-item--wide {
+      grid-column: span 1;
     }
   }
 </style>

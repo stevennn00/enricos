@@ -1,34 +1,46 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const dishes = [
   {
     name: "Birria Tacos",
-    description: "Slow-braised beef birria in handmade corn tortillas, dipped and pan-fried, served with rich consommé for dipping.",
     tag: "Fan Favorite",
-    color: "#b91c1c",
+    description: "Crispy, juicy, and built for dipping. Beef birria in corn tortillas, fried until golden, served with a rich consommé.",
+    img: "pexels-lucia-photography-in-progress-cano-318039738-31632714.jpg",
+    alt: "Birria tacos with consommé dipping bowl and radishes",
+    accent: "var(--salsa)",
   },
   {
     name: "Gorditas",
-    description: "Thick, pillowy masa pockets stuffed with savory fillings — crispy outside, soft inside.",
     tag: "House Specialty",
-    color: "#d4a017",
+    description: "A handmade-style favorite with a hearty filling. Thick masa, crispy edges, soft center — loaded and satisfying.",
+    img: "pexels-kuiyibo-13191276.jpg",
+    alt: "Gordita filled with pulled meat on a wooden board",
+    accent: "var(--clay)",
   },
   {
     name: "Suadero",
-    description: "Tender, caramelized beef cut cooked low and slow — a Mexico City street-taco classic.",
     tag: "Street Classic",
-    color: "#2d6a4f",
+    description: "A classic taqueria cut with deep savory flavor. Slow-cooked beef on warm tortillas with cilantro and onion.",
+    img: "pexels-chitokan-3264572.jpg",
+    alt: "Street-style beef tacos with cilantro, onion, and lime",
+    accent: "var(--tomatillo)",
   },
   {
     name: "Flautas",
-    description: "Tightly rolled corn tortillas filled with seasoned meat, fried golden and topped with fresh garnishes.",
     tag: "Crowd Pleaser",
-    color: "#b91c1c",
+    description: "Rolled, fried, and topped with all the good stuff. Crunchy outside, full of flavor inside.",
+    img: "pexels-cristian-rojas-8448323.jpg",
+    alt: "Flautas on a board topped with cheese, cabbage, and pickled onions",
+    accent: "var(--amber)",
   },
   {
     name: "Taco Salad",
-    description: "A hearty bowl with seasoned meat, fresh greens, beans, salsa and all the fixings.",
     tag: "Fresh Pick",
-    color: "#40916c",
+    description: "A hearty bowl built for serious appetites — seasoned meat, fresh greens, salsa, and all the fixings.",
+    img: "pexels-khezez-29907570.jpg",
+    alt: "Taco salad in a crispy shell with drinks and sides on a restaurant table",
+    accent: "var(--tomatillo-light)",
   },
 ];
 ---
@@ -37,15 +49,21 @@ const dishes = [
     <span class="section-label">Popular Dishes</span>
     <h2 class="section-title">What Locals Love</h2>
     <p class="section-subtitle">
-      A taste of what's keeping Dunedin coming back late into the night.
-      Menu details to be confirmed by owner.
+      Open late, every night of the week. Menu details to be confirmed by owner.
     </p>
     <div class="dishes-grid">
       {dishes.map((dish) => (
         <article class="dish-card">
-          <div class="dish-accent" style={`background: ${dish.color}`}></div>
+          <div class="dish-img-wrap">
+            <img
+              src={`${base}images/${dish.img}`}
+              alt={dish.alt}
+              class="dish-img"
+              loading="lazy"
+            />
+            <span class="dish-tag" style={`background: ${dish.accent}`}>{dish.tag}</span>
+          </div>
           <div class="dish-body">
-            <span class="dish-tag" style={`color: ${dish.color}`}>{dish.tag}</span>
             <h3 class="dish-name">{dish.name}</h3>
             <p class="dish-desc">{dish.description}</p>
           </div>
@@ -54,23 +72,23 @@ const dishes = [
     </div>
   </div>
 </section>
+<div class="tile-divider"></div>
 
 <style>
   .dishes {
-    background: var(--white);
+    background: var(--crema-dark);
   }
 
   .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
   }
 
   .dish-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--cream);
+    background: var(--white);
     box-shadow: var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
@@ -78,39 +96,57 @@ const dishes = [
   }
 
   .dish-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
   }
 
-  .dish-accent {
-    height: 5px;
+  .dish-img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .dish-img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .dish-card:hover .dish-img {
+    transform: scale(1.04);
+  }
+
+  .dish-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.7rem;
+    border-radius: 100px;
   }
 
   .dish-body {
-    padding: 1.4rem 1.4rem 1.6rem;
+    padding: 1.25rem 1.35rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
     flex: 1;
   }
 
-  .dish-tag {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
   .dish-name {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-family: var(--font-heading);
     color: var(--charcoal);
   }
 
   .dish-desc {
-    font-size: 0.93rem;
-    color: var(--gray);
+    font-size: 0.9rem;
+    color: var(--muted);
     line-height: 1.55;
   }
 </style>
